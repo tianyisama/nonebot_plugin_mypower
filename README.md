@@ -24,6 +24,13 @@ _✨ 一款随机生成超能力的插件（适用于Onebot V11）✨_
 ## 💿 安装
 
 <details>
+<summary>安装pillow</summary>
+
+
+    pip install pillow
+</details>
+
+<details>
 <summary>使用PIP安装</summary>
 
 
@@ -36,3 +43,13 @@ _✨ 一款随机生成超能力的插件（适用于Onebot V11）✨_
 |:-----:|:----:|:----:|:----:|
 | 我的超能力 | 所有人 | 否 | 群聊 |
 
+### 效果图
+
+<div align="left">
+  <img src="https://bed.tianyi.one/i/2024/01/14/10fptuv.jpg
+"/>
+</div>
+<div align="left">
+  <img src="https://bed.tianyi.one/i/2024/01/14/10gc6qd.png
+"/>
+</div>
