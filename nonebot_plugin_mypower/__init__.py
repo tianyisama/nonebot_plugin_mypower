@@ -1,29 +1,34 @@
 import os
 import random
-from io import BytesIO
-from PIL import Image
+from io import BytesIO  # 导入BytesIO
 from nonebot import on_command
 from nonebot.adapters.onebot.v11 import MessageSegment
+from nonebot.plugin import PluginMetadata
+
+# 元数据
+__plugin_meta__ = PluginMetadata(
+    name="nonebot-plugin-mypower",
+    description="随机生成超能力",
+    usage="我的超能力",
+    type="application",
+    homepage="https://github.com/tianyisama/nonebot_plugin_mypower",
+    supported_adapters={"~onebot.v11"},
+)
+
+# 尝试导入Pillow
+try:
+    from PIL import Image
+    pillow_available = True
+except ImportError:
+    pillow_available = False
 
 # 命令触发
 my_superpower = on_command('我的超能力', priority=10, block=True)
 
-@my_superpower.handle()
-async def _():
-    folders = ['超能力', '但是', '主义', '万圣节']
-    selected_images = []
+# 命令触发
+my_superpower = on_command('我的超能力', priority=10, block=True)
 
-    # 从四个文件夹中依次选择图片
-    for folder in folders:
-        folder_path = os.path.join(os.path.dirname(__file__), folder)
-        images = [os.path.join(folder_path, f) for f in os.listdir(folder_path) if f.endswith(('.png', '.jpg', '.jpeg', '.gif'))]
-        if images:
-            selected_image_path = random.choice(images)
-            selected_images.append(selected_image_path)
-        else:
-            await my_superpower.send(f"No images found in {folder}.")
-            return
-
+def create_image(selected_images):
     # 读取第一张图片以确定宽度
     first_image = Image.open(selected_images[0])
     total_width = first_image.width
@@ -46,13 +51,36 @@ async def _():
         new_image.paste(img, (0, current_height))
         current_height += img.height
 
-    # 将图片转换为字节流
-    img_byte_arr = BytesIO()
-    new_image.save(img_byte_arr, format='PNG')
-    img_byte_arr.seek(0)
+    return new_image
 
-    # 发送图片
+@my_superpower.handle()
+async def _():
+    if not pillow_available:
+        await my_superpower.send("图片处理功能无法使用，因为Pillow库没有安装。")
+        return
+
+    folders = ['超能力', '但是', '主义', '万圣节']
+    selected_images = []
+
+    # 从四个文件夹中依次选择图片
+    for folder in folders:
+        folder_path = os.path.join(os.path.dirname(__file__), folder)
+        images = [os.path.join(folder_path, f) for f in os.listdir(folder_path) if f.endswith(('.png', '.jpg', '.jpeg', '.gif'))]
+        if images:
+            selected_image_path = random.choice(images)
+            selected_images.append(selected_image_path)
+        else:
+            await my_superpower.send(f"No images found in {folder}.")
+            return
+
     try:
+        # 创建图片并转换为字节流
+        new_image = create_image(selected_images)
+        img_byte_arr = BytesIO()
+        new_image.save(img_byte_arr, format='PNG')
+        img_byte_arr.seek(0)
+
+        # 发送图片
         await my_superpower.send(MessageSegment.image(img_byte_arr))
     except Exception as e:
         await my_superpower.send(f"图片发送失败: {e}")

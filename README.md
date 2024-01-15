@@ -11,7 +11,7 @@
 _✨ 一款随机生成超能力的插件（适用于Onebot V11）✨_
 
 <a href="./LICENSE">
-    <img src="https://camo.githubusercontent.com/6849e28a50157229c6a1426570610ecbe589c68bd7c806f4f7513d7265db8cf2/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f6e6f6e65706c7567696e2f6e6f6e65626f742d706c7567696e2d706574706574" alt="license">
+    <img src="https://img.shields.io/github/license/tianyisama/nonebot_plugin_mypower" alt="license">
 </a><img src="https://img.shields.io/badge/nonebot-2.0.0rc1+-red.svg" alt="NoneBot">
 <img src="https://img.shields.io/badge/python-3.8+-blue.svg" alt="python">
 
@@ -35,6 +35,9 @@ _✨ 一款随机生成超能力的插件（适用于Onebot V11）✨_
 
 
     pip install nonebot-plugin-mypower
+    
+安装完成后，请在你的`bot.py`文件中添加以下代码来导入插件：
+nonebot.load_plugin("nonebot_plugin_mypower")
 </details>
 
 ## 🎉 使用
@@ -46,10 +49,8 @@ _✨ 一款随机生成超能力的插件（适用于Onebot V11）✨_
 ### 效果图
 
 <div align="left">
-  <img src="https://bed.tianyi.one/i/2024/01/14/10fptuv.jpg
-"/>
+  <img src="https://bed.tianyi.one/i/2024/01/14/10fptuv.jpg"/>
 </div>
 <div align="left">
-  <img src="https://bed.tianyi.one/i/2024/01/14/10gc6qd.png
-"/>
+  <img src="https://bed.tianyi.one/i/2024/01/14/10gc6qd.png"/>
 </div>
