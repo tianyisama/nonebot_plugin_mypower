@@ -24,10 +24,20 @@ _✨ 一款随机生成超能力的插件（适用于Onebot V11）✨_
 ## 💿 安装
 
 <details>
-<summary>安装pillow</summary>
+<summary>安装pillow(必须)</summary>
 
 
     pip install pillow
+  若采用了虚拟环境，则需要在虚拟环境中执行
+</details>
+
+<details>
+<summary>使用nb-cli安装(推荐)</summary>
+
+
+    nb plugin install nonebot-plugin-mypower
+    
+
 </details>
 
 <details>
@@ -37,7 +47,7 @@ _✨ 一款随机生成超能力的插件（适用于Onebot V11）✨_
     pip install nonebot-plugin-mypower
     
 安装完成后，请在你的`bot.py`文件中添加以下代码来导入插件：
-nonebot.load_plugin("nonebot_plugin_mypower")
+ `nonebot.load_plugin("nonebot_plugin_mypower")`
 </details>
 
 ## 🎉 使用
@@ -46,7 +56,14 @@ nonebot.load_plugin("nonebot_plugin_mypower")
 |:-----:|:----:|:----:|:----:|
 | 我的超能力 | 所有人 | 否 | 群聊 |
 
-### 效果图
+
+
+## ⚠ 注意
+
+本插件部分超能力与副作用不符合QQbot的运营规范，若对接QQbot，请前往此路径下的"超能力"和"但是"文件夹删除不适宜的图片
+ `.venv/Lib/site-packages/nonebot-plugin-mypower/`
+
+ ### 效果图
 
 <div align="left">
   <img src="https://bed.tianyi.one/i/2024/01/14/10fptuv.jpg"/>
