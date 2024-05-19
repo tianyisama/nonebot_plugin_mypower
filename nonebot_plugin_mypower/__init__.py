@@ -3,6 +3,7 @@ import random
 from io import BytesIO  # 导入BytesIO
 from nonebot import on_command
 from nonebot.adapters.onebot.v11 import MessageSegment
+from nonebot.adapters.onebot.v11.message import Message
 from nonebot.plugin import PluginMetadata
 
 # 元数据
@@ -25,8 +26,7 @@ except ImportError:
 # 命令触发
 my_superpower = on_command('我的超能力', priority=10, block=True)
 
-# 命令触发
-my_superpower = on_command('我的超能力', priority=10, block=True)
+
 
 def create_image(selected_images):
     # 读取第一张图片以确定宽度
@@ -81,6 +81,7 @@ async def _():
         img_byte_arr.seek(0)
 
         # 发送图片
-        await my_superpower.send(MessageSegment.image(img_byte_arr))
+        await my_superpower.send(MessageSegment.reply(event.message_id) + MessageSegment.image(img_byte_arr))
     except Exception as e:
-        await my_superpower.send(f"图片发送失败: {e}")
+        await my_superpower.send(MessageSegment.reply(event.message_id) + f"图片发送失败: {e}")
+
