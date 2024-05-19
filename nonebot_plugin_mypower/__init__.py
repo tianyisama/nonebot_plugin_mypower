@@ -2,7 +2,7 @@ import os
 import random
 from io import BytesIO  # 导入BytesIO
 from nonebot import on_command
-from nonebot.adapters.onebot.v11 import MessageSegment
+from nonebot.adapters.onebot.v11 import Bot, MessageSegment, Event
 from nonebot.adapters.onebot.v11.message import Message
 from nonebot.plugin import PluginMetadata
 
@@ -54,7 +54,7 @@ def create_image(selected_images):
     return new_image
 
 @my_superpower.handle()
-async def _():
+async def _(bot: Bot, event: Event):
     if not pillow_available:
         await my_superpower.send("图片处理功能无法使用，因为Pillow库没有安装。")
         return

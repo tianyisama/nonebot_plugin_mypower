@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nonebot-plugin-mypower"
-version = "0.1.0"
+version = "0.1.6"
 description = "一款随机生成超能力的插件（适用于Onebot V11）"
 authors = ["TianYi"]
 license = "MIT"
